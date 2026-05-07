@@ -111,7 +111,8 @@
       try {
         const res = await fetch(DATA_URL);
         if (!res.ok) throw new Error('加载失败');
-        return await res.json();
+const text = await res.text();
+return JSON.parse(text);
       } catch(e) { return getDefaultData(); }
     }
 
