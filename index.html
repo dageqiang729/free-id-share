@@ -111,7 +111,8 @@ const DATA_URL = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/data.j
       try {
         const res = await fetch(DATA_URL);
         if (!res.ok) throw new Error('加载失败');
-const text = await res.text();
+const buffer = await res.arrayBuffer();
+const text = new TextDecoder('utf-8').decode(buffer);
 return JSON.parse(text);
       } catch(e) { return getDefaultData(); }
     }
