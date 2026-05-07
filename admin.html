@@ -325,7 +325,7 @@
 
       const body = {
         message: '更新数据 ' + new Date().toLocaleString(),
-        content: btoa(unescape(encodeURIComponent(content)))
+content: btoa(String.fromCharCode(...new TextEncoder().encode(content)))
       };
 
       try {
