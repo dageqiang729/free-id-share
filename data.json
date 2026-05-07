@@ -1,0 +1,36 @@
+{
+  "free": [
+    {"country":"中国","icon":"fas fa-flag","id":"cn.free@qq.com","password":"Beijing2024!","extra":"国内可用"},
+    {"country":"美国","icon":"fas fa-flag-usa","id":"us.test@freemail.com","password":"FreeUS2024!","extra":"VPN可用"},
+    {"country":"日本","icon":"fas fa-flag","id":"jp.demo@jpconnect.jp","password":"Tokyo#2024","extra":"地域限定"},
+    {"country":"韩国","icon":"fas fa-flag","id":"kr.test@kakao.co.kr","password":"Seoul2024*","extra":"验证可用"},
+    {"country":"德国","icon":"fas fa-flag","id":"de.free@bundesnetz.de","password":"Berlin#2024","extra":"EU节点"},
+    {"country":"法国","icon":"fas fa-flag","id":"fr.free@orange.fr","password":"Paris2024!","extra":"欧洲节点"},
+    {"country":"英国","icon":"fas fa-flag","id":"uk.demo@outlook.co.uk","password":"London#24","extra":"BBC可用"},
+    {"country":"加拿大","icon":"fas fa-flag","id":"ca.test@mail.ca","password":"Maple2024","extra":"北美线路"},
+    {"country":"澳大利亚","icon":"fas fa-flag","id":"au.demo@bigpond.au","password":"Sydney#24","extra":"大洋洲"},
+    {"country":"印度","icon":"fas fa-flag","id":"in.demo@rediffmail.com","password":"India@2024","extra":"共享IP"},
+    {"country":"巴西","icon":"fas fa-flag","id":"br.teste@uol.com.br","password":"Brasil2024$","extra":"南美线路"},
+    {"country":"意大利","icon":"fas fa-flag","id":"it.free@libero.it","password":"Roma2024!","extra":"南欧节点"}
+  ],
+  "rental": [
+    {"game":"我的世界","icon":"fas fa-cube","price":"¥8/天","desc":"Java版·正版","link":"#"},
+    {"game":"泰拉瑞亚","icon":"fas fa-tree","price":"¥6/天","desc":"含灾厄模组","link":"#"},
+    {"game":"星露谷物语","icon":"fas fa-seedling","price":"¥5/天","desc":"联机可用","link":"#"},
+    {"game":"CS:GO/CS2","icon":"fas fa-crosshairs","price":"¥10/天","desc":"优先账户","link":"#"},
+    {"game":"绝地求生","icon":"fas fa-person-rifle","price":"¥9/天","desc":"普通账号","link":"#"},
+    {"game":"Among Us","icon":"fas fa-user-astronaut","price":"¥4/天","desc":"全皮肤","link":"#"}
+  ],
+  "premium": [
+    {"country":"中国","icon":"fas fa-flag","price":"¥25/月","link":"#"},
+    {"country":"美国","icon":"fas fa-flag-usa","price":"¥29/月","link":"#"},
+    {"country":"日本","icon":"fas fa-flag","price":"¥35/月","link":"#"},
+    {"country":"韩国","icon":"fas fa-flag","price":"¥32/月","link":"#"},
+    {"country":"英国","icon":"fas fa-flag","price":"¥38/月","link":"#"},
+    {"country":"德国","icon":"fas fa-flag","price":"¥30/月","link":"#"},
+    {"country":"法国","icon":"fas fa-flag","price":"¥31/月","link":"#"},
+    {"country":"加拿大","icon":"fas fa-flag","price":"¥28/月","link":"#"}
+  ],
+  "images": {},
+  "updated_at": "2026-05-07T00:00:00Z"
+}
