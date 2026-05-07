@@ -40,80 +40,35 @@
       color: #0f172a;
     }
     h1 i { color: #2563eb; font-size: 2.2rem; filter: drop-shadow(0 4px 6px rgba(37, 99, 235, 0.2)); }
-    .subtitle {
-      color: #475569;
-      margin-bottom: 2.2rem;
-      font-size: 1rem;
-      font-weight: 500;
-      border-left: 4px solid #2563eb;
-      padding-left: 1.2rem;
-    }
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 1.5rem;
-      font-weight: 650;
-      margin: 2rem 0 1.3rem;
-      color: #1e293b;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 0.6rem;
-    }
+    .subtitle { color: #475569; margin-bottom: 2.2rem; font-size: 1rem; font-weight: 500; border-left: 4px solid #2563eb; padding-left: 1.2rem; }
+    .section-title { display: flex; align-items: center; gap: 0.6rem; font-size: 1.5rem; font-weight: 650; margin: 2rem 0 1.3rem; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.6rem; }
     .section-title i { color: #2563eb; font-size: 1.4rem; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.3rem;
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.3rem; }
     .id-card {
-      background: #ffffff;
-      border-radius: 1.8rem;
-      padding: 1.3rem;
-      border: 1px solid #e9eef3;
-      box-shadow: 0 8px 20px -8px rgba(0,0,0,0.06);
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
+      background: #ffffff; border-radius: 1.8rem; padding: 1.3rem; border: 1px solid #e9eef3;
+      box-shadow: 0 8px 20px -8px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column; gap: 0.9rem;
     }
     .id-card:hover { transform: translateY(-5px); box-shadow: 0 22px 30px -12px rgba(0,27,55,0.12); border-color: #b9d0f0; }
     .icon-top { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
     .icon-large { font-size: 2.8rem; color: #1e3a8a; }
     .icon-img { width: 50px; height: 50px; object-fit: contain; border-radius: 0.5rem; }
     .item-label { font-weight: 700; font-size: 1.1rem; color: #0f172a; }
-    .badge {
-      background: #f1f5f9; padding: 0.3rem 0.9rem; border-radius: 2rem;
-      font-size: 0.7rem; font-weight: 700; color: #334155; border: 1px solid #dce3eb;
-    }
+    .badge { background: #f1f5f9; padding: 0.3rem 0.9rem; border-radius: 2rem; font-size: 0.7rem; font-weight: 700; color: #334155; border: 1px solid #dce3eb; }
     .id-details {
       background: #f8fafc; border-radius: 1rem; padding: 0.7rem 1rem;
       display: flex; justify-content: space-between; align-items: center;
       font-family: monospace; font-size: 0.85rem; border: 1px solid #e2e8f0;
     }
     .id-label { font-weight: 700; color: #64748b; margin-right: 0.5rem; font-size: 0.65rem; text-transform: uppercase; }
-    .copy-btn {
-      background: #fff; border: 1px solid #e2e8f0; color: #64748b; cursor: pointer;
-      font-size: 1.1rem; padding: 0.35rem 0.55rem; border-radius: 0.7rem;
-    }
+    .copy-btn { background: #fff; border: 1px solid #e2e8f0; color: #64748b; cursor: pointer; font-size: 1.1rem; padding: 0.35rem 0.55rem; border-radius: 0.7rem; }
     .copy-btn:hover { color: #2563eb; background: #eff6ff; }
     .extra-info { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
-    .password-row {
-      display: flex; align-items: center; gap: 0.3rem;
-      background: #f1f5f9; padding: 0.25rem 0.8rem; border-radius: 1.5rem;
-    }
-    .rental-card, .premium-card {
-      background: linear-gradient(135deg, #fff 0%, #f8faff 100%);
-      border: 1px solid #d9e6ff; box-shadow: 0 12px 24px -10px rgba(37,99,235,0.12);
-    }
-    .rental-content, .premium-content {
-      display: flex; flex-direction: column; align-items: center; gap: 0.6rem; width: 100%;
-    }
-    .rental-badge, .premium-badge {
-      background: #2563eb; color: white; padding: 0.3rem 1rem; border-radius: 2rem; font-size: 0.7rem;
-    }
-    .rental-desc, .premium-desc {
-      color: #475569; font-size: 0.85rem; background: #f1f5f9; padding: 0.3rem 1.2rem; border-radius: 2rem;
-    }
+    .password-row { display: flex; align-items: center; gap: 0.3rem; background: #f1f5f9; padding: 0.25rem 0.8rem; border-radius: 1.5rem; }
+    .rental-card, .premium-card { background: linear-gradient(135deg, #fff 0%, #f8faff 100%); border: 1px solid #d9e6ff; box-shadow: 0 12px 24px -10px rgba(37,99,235,0.12); }
+    .rental-content, .premium-content { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; width: 100%; }
+    .rental-badge, .premium-badge { background: #2563eb; color: white; padding: 0.3rem 1rem; border-radius: 2rem; font-size: 0.7rem; }
+    .rental-desc, .premium-desc { color: #475569; font-size: 0.85rem; background: #f1f5f9; padding: 0.3rem 1.2rem; border-radius: 2rem; }
     .buy-btn, .rent-btn {
       background: white; border: 2px solid #2563eb; color: #2563eb; font-weight: 700;
       padding: 0.6rem 2rem; border-radius: 2.5rem; cursor: pointer; transition: 0.2s;
@@ -122,10 +77,7 @@
     .buy-btn:hover, .rent-btn:hover { background: #2563eb; color: white; }
     .price-tag { font-weight: 800; color: #0f172a; font-size: 1.5rem; }
     .custom-country-card { border: 2px dashed #b9d0f0; background: #fafcff; }
-    .custom-country-input {
-      width: 90%; padding: 0.5rem 0.8rem; border-radius: 1.5rem; border: 1px solid #dce3eb;
-      text-align: center; outline: none;
-    }
+    .custom-country-input { width: 90%; padding: 0.5rem 0.8rem; border-radius: 1.5rem; border: 1px solid #dce3eb; text-align: center; outline: none; }
     .custom-country-input:focus { border-color: #2563eb; }
     hr { border-color: #e2e8f0; margin: 2rem 0 1.5rem; }
     .footer-note {
@@ -133,40 +85,26 @@
       background: #f1f5f9; padding: 0.7rem 1.5rem; border-radius: 3rem; width: fit-content;
       margin-left: auto; margin-right: auto;
     }
-    @media (max-width: 600px) {
-      body { padding: 0.8rem; }
-      .main-card { padding: 1.5rem 1rem; }
-      h1 { font-size: 1.9rem; }
-    }
+    @media (max-width: 600px) { body { padding: 0.8rem; } .main-card { padding: 1.5rem 1rem; } h1 { font-size: 1.9rem; } }
   </style>
 </head>
 <body>
   <div class="main-card">
     <h1><i class="fas fa-globe-americas"></i> 全球免费ID·共享站</h1>
     <div class="subtitle"><i class="fas fa-shield-alt" style="margin-right:6px;"></i> 明亮舒适 · 免费共享 · 租用独享</div>
-
     <div class="section-title"><i class="fas fa-flag"></i> 🌍 多国免费共享ID</div>
     <div class="grid" id="countryGrid"><p style="padding:1rem;">加载中...</p></div>
-
     <div class="section-title"><i class="fas fa-gamepad"></i> 🎮 账号租用·热门游戏</div>
     <div class="grid" id="rentalGrid"><p style="padding:1rem;">加载中...</p></div>
-
     <div class="section-title"><i class="fas fa-crown" style="color:#f59e0b;"></i> 👑 独享账号 · 个人专用</div>
     <div class="grid" id="premiumGrid"><p style="padding:1rem;">加载中...</p></div>
-    
     <hr>
-    <div class="footer-note">
-      <i class="fas fa-sync-alt" style="color:#2563eb;"></i> 
-      <span>共享账号定期更新 · 租用/独享质保3天 · 仅供学习测试</span>
-    </div>
+    <div class="footer-note"><i class="fas fa-sync-alt" style="color:#2563eb;"></i> <span>共享账号定期更新 · 租用/独享质保3天 · 仅供学习测试</span></div>
   </div>
 
   <script>
-    // ========== 改成你自己的仓库信息 ==========
     const OWNER = 'dageqiang729';
     const REPO = 'free-id-share';
-    // =========================================
-
     const DATA_URL = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/data.json`;
 
     async function loadData() {
@@ -174,54 +112,33 @@
         const res = await fetch(DATA_URL);
         if (!res.ok) throw new Error('加载失败');
         return await res.json();
-      } catch(e) {
-        console.error('加载失败', e);
-        return getDefaultData();
-      }
+      } catch(e) { return getDefaultData(); }
     }
 
     function getDefaultData() {
       return {
         free: [
-          { country:"中国", icon:"fas fa-flag", id:"cn.free@qq.com", password:"Beijing2024!", extra:"国内可用" },
-          { country:"美国", icon:"fas fa-flag-usa", id:"us.test@freemail.com", password:"FreeUS2024!", extra:"VPN可用" },
-          { country:"日本", icon:"fas fa-flag", id:"jp.demo@jpconnect.jp", password:"Tokyo#2024", extra:"地域限定" },
-          { country:"韩国", icon:"fas fa-flag", id:"kr.test@kakao.co.kr", password:"Seoul2024*", extra:"验证可用" },
-          { country:"德国", icon:"fas fa-flag", id:"de.free@bundesnetz.de", password:"Berlin#2024", extra:"EU节点" },
-          { country:"法国", icon:"fas fa-flag", id:"fr.free@orange.fr", password:"Paris2024!", extra:"欧洲节点" },
-          { country:"英国", icon:"fas fa-flag", id:"uk.demo@outlook.co.uk", password:"London#24", extra:"BBC可用" },
-          { country:"加拿大", icon:"fas fa-flag", id:"ca.test@mail.ca", password:"Maple2024", extra:"北美线路" },
-          { country:"澳大利亚", icon:"fas fa-flag", id:"au.demo@bigpond.au", password:"Sydney#24", extra:"大洋洲" },
-          { country:"印度", icon:"fas fa-flag", id:"in.demo@rediffmail.com", password:"India@2024", extra:"共享IP" },
-          { country:"巴西", icon:"fas fa-flag", id:"br.teste@uol.com.br", password:"Brasil2024$", extra:"南美线路" },
-          { country:"意大利", icon:"fas fa-flag", id:"it.free@libero.it", password:"Roma2024!", extra:"南欧节点" }
+          {"country":"中国","icon":"fas fa-flag","id":"cn.free@qq.com","password":"Beijing2024!","extra":"国内可用"},
+          {"country":"美国","icon":"fas fa-flag-usa","id":"us.test@freemail.com","password":"FreeUS2024!","extra":"VPN可用"},
+          {"country":"日本","icon":"fas fa-flag","id":"jp.demo@jpconnect.jp","password":"Tokyo#2024","extra":"地域限定"},
+          {"country":"韩国","icon":"fas fa-flag","id":"kr.test@kakao.co.kr","password":"Seoul2024*","extra":"验证可用"},
+          {"country":"德国","icon":"fas fa-flag","id":"de.free@bundesnetz.de","password":"Berlin#2024","extra":"EU节点"}
         ],
         rental: [
-          { game:"我的世界", icon:"fas fa-cube", price:"¥8/天", desc:"Java版·正版", link:"#" },
-          { game:"泰拉瑞亚", icon:"fas fa-tree", price:"¥6/天", desc:"含灾厄模组", link:"#" },
-          { game:"星露谷物语", icon:"fas fa-seedling", price:"¥5/天", desc:"联机可用", link:"#" },
-          { game:"CS:GO/CS2", icon:"fas fa-crosshairs", price:"¥10/天", desc:"优先账户", link:"#" },
-          { game:"绝地求生", icon:"fas fa-person-rifle", price:"¥9/天", desc:"普通账号", link:"#" },
-          { game:"Among Us", icon:"fas fa-user-astronaut", price:"¥4/天", desc:"全皮肤", link:"#" }
+          {"game":"我的世界","icon":"fas fa-cube","price":"¥8/天","desc":"Java版·正版","link":"#"},
+          {"game":"泰拉瑞亚","icon":"fas fa-tree","price":"¥6/天","desc":"含灾厄模组","link":"#"}
         ],
         premium: [
-          { country:"中国", icon:"fas fa-flag", price:"¥25/月", link:"#" },
-          { country:"美国", icon:"fas fa-flag-usa", price:"¥29/月", link:"#" },
-          { country:"日本", icon:"fas fa-flag", price:"¥35/月", link:"#" },
-          { country:"韩国", icon:"fas fa-flag", price:"¥32/月", link:"#" },
-          { country:"英国", icon:"fas fa-flag", price:"¥38/月", link:"#" },
-          { country:"德国", icon:"fas fa-flag", price:"¥30/月", link:"#" },
-          { country:"法国", icon:"fas fa-flag", price:"¥31/月", link:"#" },
-          { country:"加拿大", icon:"fas fa-flag", price:"¥28/月", link:"#" }
+          {"country":"中国","icon":"fas fa-flag","price":"¥25/月","link":"#"},
+          {"country":"美国","icon":"fas fa-flag-usa","price":"¥29/月","link":"#"},
+          {"country":"日本","icon":"fas fa-flag","price":"¥35/月","link":"#"}
         ]
       };
     }
 
     function renderIcon(icon) {
       if (!icon) return '<i class="fas fa-flag"></i>';
-      if (icon.startsWith('data:image') || icon.startsWith('http') || icon.startsWith('/')) {
-        return `<img src="${icon}" class="icon-img" alt="图标" onerror="this.innerHTML='<i class=\\'fas fa-flag\\'></i>'">`;
-      }
+      if (icon.startsWith('data:image') || icon.startsWith('http')) return `<img src="${icon}" class="icon-img" alt="图标">`;
       return `<i class="${icon}"></i>`;
     }
 
@@ -242,21 +159,14 @@
 
       document.getElementById('countryGrid').innerHTML = freeData.map(item => `
         <div class="id-card">
-          <div class="icon-top">
-            <span class="icon-large">${renderIcon(item.icon)}</span>
-            <span class="item-label">${item.country || '未知'}</span>
-          </div>
+          <div class="icon-top"><span class="icon-large">${renderIcon(item.icon)}</span><span class="item-label">${item.country||'未知'}</span></div>
           <div class="id-details">
-            <span style="flex:1;"><span class="id-label">ID</span>${item.id || ''}</span>
+            <span style="flex:1;"><span class="id-label">ID</span>${item.id||''}</span>
             <button class="copy-btn" data-copy="${(item.id||'').replace(/"/g,'&quot;')}"><i class="far fa-copy"></i></button>
           </div>
           <div class="extra-info">
-            <div class="password-row">
-              <i class="fas fa-key" style="color:#2563eb;"></i>
-              <span style="font-family:monospace;">${item.password || ''}</span>
-              <button class="copy-btn" data-copy="${(item.password||'').replace(/"/g,'&quot;')}"><i class="far fa-copy"></i></button>
-            </div>
-            <span style="font-size:0.7rem;background:#f1f5f9;padding:0.2rem 0.7rem;border-radius:1rem;">${item.extra || ''}</span>
+            <div class="password-row"><i class="fas fa-key" style="color:#2563eb;"></i><span style="font-family:monospace;">${item.password||''}</span><button class="copy-btn" data-copy="${(item.password||'').replace(/"/g,'&quot;')}"><i class="far fa-copy"></i></button></div>
+            <span style="font-size:0.7rem;background:#f1f5f9;padding:0.2rem 0.7rem;border-radius:1rem;">${item.extra||''}</span>
           </div>
         </div>
       `).join('');
@@ -264,14 +174,10 @@
       document.getElementById('rentalGrid').innerHTML = rentalData.map(item => `
         <div class="id-card rental-card">
           <div class="rental-content">
-            <span class="icon-large">${renderIcon(item.icon)}</span>
-            <span class="item-label" style="font-size:1.2rem;">${item.game || '游戏'}</span>
+            <span class="icon-large">${renderIcon(item.icon)}</span><span class="item-label" style="font-size:1.2rem;">${item.game||'游戏'}</span>
             <span class="rental-badge"><i class="fas fa-clock"></i> 时租</span>
-            <div class="rental-desc">${item.desc || ''}</div>
-            <div class="price-tag">${item.price || '¥0/天'}</div>
-            <a href="${item.link || '#'}" target="_blank" style="text-decoration:none;">
-              <button class="rent-btn"><i class="fas fa-play"></i> 立即租用</button>
-            </a>
+            <div class="rental-desc">${item.desc||''}</div><div class="price-tag">${item.price||'¥0/天'}</div>
+            <a href="${item.link||'#'}" target="_blank" style="text-decoration:none;"><button class="rent-btn"><i class="fas fa-play"></i> 立即租用</button></a>
           </div>
         </div>
       `).join('');
@@ -279,44 +185,34 @@
       document.getElementById('premiumGrid').innerHTML = premiumData.map(item => `
         <div class="id-card premium-card">
           <div class="premium-content">
-            <span class="icon-large" style="font-size:2.6rem;">${renderIcon(item.icon)}</span>
-            <span class="item-label" style="font-size:1.2rem;">${item.country || '国家'}</span>
+            <span class="icon-large" style="font-size:2.6rem;">${renderIcon(item.icon)}</span><span class="item-label" style="font-size:1.2rem;">${item.country||'国家'}</span>
             <span class="premium-badge"><i class="fas fa-crown"></i> 独享</span>
-            <div class="premium-desc">个人独享账号-提供密保-质保3天</div>
-            <div class="price-tag">${item.price || '¥0/月'}</div>
-            <a href="${item.link || '#'}" target="_blank" style="text-decoration:none;">
-              <button class="buy-btn"><i class="fas fa-shopping-cart"></i> 立即购买</button>
-            </a>
+            <div class="premium-desc">个人独享账号-提供密保-质保3天</div><div class="price-tag">${item.price||'¥0/月'}</div>
+            <a href="${item.link||'#'}" target="_blank" style="text-decoration:none;"><button class="buy-btn"><i class="fas fa-shopping-cart"></i> 立即购买</button></a>
           </div>
         </div>
       `).join('') + `
         <div class="id-card premium-card custom-country-card">
           <div class="premium-content">
             <i class="fas fa-globe icon-large" style="font-size:2.6rem; color:#2563eb;"></i>
-            <span class="item-label" style="font-size:1.2rem;">自定义国家</span>
+            <span class="item-label">自定义国家</span>
             <input type="text" class="custom-country-input" placeholder="输入国家名称" id="customCountryInput">
             <span class="premium-badge"><i class="fas fa-crown"></i> 独享</span>
             <div class="premium-desc">个人独享账号-提供密保-质保3天</div>
             <div class="price-tag" id="customPrice">¥??/月</div>
-            <a href="#" target="_blank" style="text-decoration:none;">
-              <button class="buy-btn"><i class="fas fa-shopping-cart"></i> 咨询购买</button>
-            </a>
+            <a href="#" target="_blank" style="text-decoration:none;"><button class="buy-btn"><i class="fas fa-shopping-cart"></i> 咨询购买</button></a>
           </div>
         </div>
       `;
 
-      const customInput = document.getElementById('customCountryInput');
-      if (customInput) {
-        customInput.addEventListener('input', function(e) {
-          document.getElementById('customPrice').textContent = e.target.value.trim() ? '¥??/月 (询价)' : '¥??/月';
-        });
-      }
+      const ci = document.getElementById('customCountryInput');
+      if (ci) ci.addEventListener('input', e => { document.getElementById('customPrice').textContent = e.target.value.trim() ? '¥??/月 (询价)' : '¥??/月'; });
 
       document.querySelectorAll('.copy-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
-          const txt = this.getAttribute('data-copy');
-          if (txt) copyToClipboard(txt, this);
+          const t = this.getAttribute('data-copy');
+          if (t) copyToClipboard(t, this);
         });
       });
     }
