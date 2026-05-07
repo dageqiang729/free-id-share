@@ -14,55 +14,6 @@
       padding: 1.5rem;
       color: #1e293b;
     }
-    .setup-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-    .setup-box {
-      background: white;
-      padding: 2rem;
-      border-radius: 1.5rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      width: 450px;
-      max-width: 90vw;
-    }
-    .setup-box h2 { margin-bottom: 1.5rem; color:#0f172a; text-align:center; }
-    .setup-box label { display:block; font-weight:600; margin-bottom:0.3rem; color:#334155; font-size:0.9rem; }
-    .setup-box input, .setup-box textarea {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      border-radius: 0.8rem;
-      border: 1px solid #dce3eb;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-      font-family: monospace;
-    }
-    .setup-box textarea { resize:vertical; min-height:80px; }
-    .setup-box button {
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: 0.8rem;
-      background: #2563eb;
-      color: white;
-      border: none;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-bottom: 0.5rem;
-    }
-    .setup-box button:hover { background: #1d4ed8; }
-    .setup-box .hint {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      text-align: center;
-      margin-top: 0.5rem;
-    }
-    .setup-box .hint a { color: #2563eb; }
     .login-overlay {
       position: fixed;
       inset: 0;
@@ -77,17 +28,18 @@
       padding: 2rem;
       border-radius: 1.5rem;
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      width: 350px;
-      text-align: center;
+      width: 400px;
+      max-width: 90vw;
     }
-    .login-box h2 { margin-bottom: 1.5rem; color:#0f172a; }
+    .login-box h2 { margin-bottom: 1.5rem; color:#0f172a; text-align:center; }
+    .login-box label { display:block; margin-bottom:0.3rem; font-weight:600; color:#334155; font-size:0.85rem; }
     .login-box input {
       width: 100%;
       padding: 0.7rem 1rem;
       border-radius: 0.8rem;
       border: 1px solid #dce3eb;
       margin-bottom: 1rem;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
     .login-box button {
       width: 100%;
@@ -100,7 +52,9 @@
       font-size: 1rem;
       cursor: pointer;
     }
-    .login-error { color: #dc2626; font-size: 0.8rem; margin-top: 0.5rem; display: none; }
+    .login-box .hint { font-size:0.7rem; color:#94a3b8; text-align:center; margin-top:0.5rem; }
+    .login-box .hint a { color:#2563eb; }
+    .login-error { color: #dc2626; font-size: 0.8rem; margin-top: 0.5rem; display: none; text-align:center; }
     .logout-btn {
       position: fixed;
       top: 1rem;
@@ -135,20 +89,15 @@
     .admin-header h1 { font-size:1.8rem; display:flex; align-items:center; gap:0.5rem; color:#0f172a; }
     .admin-header h1 i { color:#2563eb; }
     .header-btns { display:flex; gap:0.5rem; flex-wrap:wrap; }
-    .save-btn {
-      background:#2563eb; color:white; border:none; padding:0.7rem 1.5rem; border-radius:2rem;
+    .save-btn,.export-btn,.import-btn {
+      color:white; border:none; padding:0.7rem 1.5rem; border-radius:2rem;
       font-weight:700; cursor:pointer; display:flex; align-items:center; gap:0.5rem; font-size:0.9rem;
     }
+    .save-btn { background:#2563eb; }
     .save-btn:hover { background:#1d4ed8; }
-    .export-btn {
-      background:#10b981; color:white; border:none; padding:0.7rem 1.5rem; border-radius:2rem;
-      font-weight:700; cursor:pointer; display:flex; align-items:center; gap:0.5rem; font-size:0.9rem;
-    }
+    .export-btn { background:#10b981; }
     .export-btn:hover { background:#059669; }
-    .import-btn {
-      background:#f59e0b; color:white; border:none; padding:0.7rem 1.5rem; border-radius:2rem;
-      font-weight:700; cursor:pointer; display:flex; align-items:center; gap:0.5rem; font-size:0.9rem;
-    }
+    .import-btn { background:#f59e0b; }
     .import-btn:hover { background:#d97706; }
     .tabs { display:flex; gap:0.5rem; margin-bottom:1.8rem; flex-wrap:wrap; }
     .tab-btn {
@@ -215,36 +164,17 @@
   </style>
 </head>
 <body>
-  <!-- 首次配置界面 -->
-  <div class="setup-overlay" id="setupOverlay">
-    <div class="setup-box">
-      <h2><i class="fas fa-cog"></i> 首次配置</h2>
-      <label>GitHub 用户名</label>
-      <input type="text" id="setupOwner" placeholder="例如: zhangsan">
-      <label>仓库名</label>
-      <input type="text" id="setupRepo" placeholder="例如: free-id-share">
-      <label>GitHub Token</label>
-      <textarea id="setupToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"></textarea>
-      <div class="hint">
-        <a href="https://github.com/settings/tokens" target="_blank">点此获取 Token</a> | 勾选 <b>repo</b> 权限
-      </div>
-      <label>后台登录密码</label>
-      <input type="password" id="setupPassword" placeholder="设置一个密码">
-      <button onclick="saveConfig()">保存配置</button>
-      <div class="hint" style="color:#dc2626;display:none;" id="setupError"></div>
-    </div>
-  </div>
-
   <!-- 登录界面 -->
-  <div class="login-overlay" id="loginOverlay" style="display:none;">
+  <div class="login-overlay" id="loginOverlay">
     <div class="login-box">
       <h2><i class="fas fa-lock"></i> 后台登录</h2>
-      <input type="password" id="loginPassword" placeholder="请输入管理密码" onkeydown="if(event.key==='Enter')login()">
+      <label>管理密码</label>
+      <input type="password" id="loginPassword" placeholder="请输入管理密码">
+      <label>GitHub Token</label>
+      <input type="password" id="loginToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+      <div class="hint"><a href="https://github.com/settings/tokens" target="_blank">获取Token</a> | 需勾选 <b>repo</b> 权限</div>
       <button onclick="login()">登 录</button>
-      <div class="login-error" id="loginError">密码错误</div>
-      <div class="hint" style="margin-top:1rem;font-size:0.75rem;color:#94a3b8;">
-        <a href="#" onclick="resetConfig()">重新配置</a>
-      </div>
+      <div class="login-error" id="loginError">密码错误或Token无效</div>
     </div>
   </div>
 
@@ -282,72 +212,63 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // ========== 配置管理 ==========
-    let config = {};
+    const OWNER = 'dageqiang729';
+    const REPO = 'free-id-share';
+    const ADMIN_PASSWORD = 'admin123';
 
-    function loadConfig() {
-      const saved = localStorage.getItem('admin_config');
-      if (saved) {
-        config = JSON.parse(saved);
-        return true;
+    let token = '';
+    let freeData = [], rentalData = [], premiumData = [];
+    let uploadedImages = {};
+
+    // ========== 登录 ==========
+    async function login() {
+      const pwd = document.getElementById('loginPassword').value;
+      const tk = document.getElementById('loginToken').value.trim();
+      
+      if (pwd !== ADMIN_PASSWORD) {
+        document.getElementById('loginError').style.display = 'block';
+        document.getElementById('loginError').textContent = '密码错误';
+        return;
       }
-      return false;
-    }
-
-    function saveConfig() {
-      const owner = document.getElementById('setupOwner').value.trim();
-      const repo = document.getElementById('setupRepo').value.trim();
-      const token = document.getElementById('setupToken').value.trim();
-      const password = document.getElementById('setupPassword').value.trim();
-
-      if (!owner || !repo || !token || !password) {
-        document.getElementById('setupError').textContent = '请填写所有字段';
-        document.getElementById('setupError').style.display = 'block';
+      if (!tk.startsWith('ghp_')) {
+        document.getElementById('loginError').style.display = 'block';
+        document.getElementById('loginError').textContent = 'Token 格式不正确，应以 ghp_ 开头';
         return;
       }
 
-      config = { owner, repo, token, password };
-      localStorage.setItem('admin_config', JSON.stringify(config));
-      
-      document.getElementById('setupOverlay').style.display = 'none';
-      document.getElementById('loginOverlay').style.display = 'flex';
-    }
-
-    function resetConfig() {
-      localStorage.removeItem('admin_config');
-      config = {};
-      document.getElementById('loginOverlay').style.display = 'none';
-      document.getElementById('setupOverlay').style.display = 'flex';
-      document.getElementById('adminContainer').style.display = 'none';
-      document.getElementById('logoutBtn').style.display = 'none';
-    }
-
-    // ========== 登录 ==========
-    function login() {
-      const pwd = document.getElementById('loginPassword').value;
-      if (pwd === config.password) {
-        document.getElementById('loginOverlay').style.display = 'none';
-        document.getElementById('adminContainer').style.display = 'block';
-        document.getElementById('logoutBtn').style.display = 'block';
-        document.body.style.padding = '1.5rem';
-        initAdmin();
-      } else {
+      // 验证 Token 是否有效
+      const testUrl = `https://api.github.com/repos/${OWNER}/${REPO}`;
+      try {
+        const res = await fetch(testUrl, { headers: { 'Authorization': `token ${tk}` } });
+        if (!res.ok) {
+          document.getElementById('loginError').style.display = 'block';
+          document.getElementById('loginError').textContent = 'Token 无效或无权限访问仓库';
+          return;
+        }
+      } catch(e) {
         document.getElementById('loginError').style.display = 'block';
+        document.getElementById('loginError').textContent = '网络错误，请检查 Token';
+        return;
       }
+
+      token = tk;
+      document.getElementById('loginOverlay').style.display = 'none';
+      document.getElementById('adminContainer').style.display = 'block';
+      document.getElementById('logoutBtn').style.display = 'block';
+      initAdmin();
     }
 
     function logout() {
+      token = '';
       document.getElementById('adminContainer').style.display = 'none';
       document.getElementById('logoutBtn').style.display = 'none';
       document.getElementById('loginOverlay').style.display = 'flex';
       document.getElementById('loginPassword').value = '';
+      document.getElementById('loginToken').value = '';
       document.getElementById('loginError').style.display = 'none';
     }
 
-    // ========== 数据管理 ==========
-    let freeData = [], rentalData = [], premiumData = [];
-    let uploadedImages = {};
-
+    // ========== 数据加载 ==========
     function getDefaultData() {
       return {
         free: [
@@ -355,43 +276,25 @@
           { country:"美国", icon:"fas fa-flag-usa", id:"us.test@freemail.com", password:"FreeUS2024!", extra:"VPN可用" },
           { country:"日本", icon:"fas fa-flag", id:"jp.demo@jpconnect.jp", password:"Tokyo#2024", extra:"地域限定" },
           { country:"韩国", icon:"fas fa-flag", id:"kr.test@kakao.co.kr", password:"Seoul2024*", extra:"验证可用" },
-          { country:"德国", icon:"fas fa-flag", id:"de.free@bundesnetz.de", password:"Berlin#2024", extra:"EU节点" },
-          { country:"法国", icon:"fas fa-flag", id:"fr.free@orange.fr", password:"Paris2024!", extra:"欧洲节点" },
-          { country:"英国", icon:"fas fa-flag", id:"uk.demo@outlook.co.uk", password:"London#24", extra:"BBC可用" },
-          { country:"加拿大", icon:"fas fa-flag", id:"ca.test@mail.ca", password:"Maple2024", extra:"北美线路" },
-          { country:"澳大利亚", icon:"fas fa-flag", id:"au.demo@bigpond.au", password:"Sydney#24", extra:"大洋洲" },
-          { country:"印度", icon:"fas fa-flag", id:"in.demo@rediffmail.com", password:"India@2024", extra:"共享IP" },
-          { country:"巴西", icon:"fas fa-flag", id:"br.teste@uol.com.br", password:"Brasil2024$", extra:"南美线路" },
-          { country:"意大利", icon:"fas fa-flag", id:"it.free@libero.it", password:"Roma2024!", extra:"南欧节点" }
+          { country:"德国", icon:"fas fa-flag", id:"de.free@bundesnetz.de", password:"Berlin#2024", extra:"EU节点" }
         ],
         rental: [
           { game:"我的世界", icon:"fas fa-cube", price:"¥8/天", desc:"Java版·正版", link:"#" },
-          { game:"泰拉瑞亚", icon:"fas fa-tree", price:"¥6/天", desc:"含灾厄模组", link:"#" },
-          { game:"星露谷物语", icon:"fas fa-seedling", price:"¥5/天", desc:"联机可用", link:"#" },
-          { game:"CS:GO/CS2", icon:"fas fa-crosshairs", price:"¥10/天", desc:"优先账户", link:"#" },
-          { game:"绝地求生", icon:"fas fa-person-rifle", price:"¥9/天", desc:"普通账号", link:"#" },
-          { game:"Among Us", icon:"fas fa-user-astronaut", price:"¥4/天", desc:"全皮肤", link:"#" }
+          { game:"泰拉瑞亚", icon:"fas fa-tree", price:"¥6/天", desc:"含灾厄模组", link:"#" }
         ],
         premium: [
           { country:"中国", icon:"fas fa-flag", price:"¥25/月", link:"#" },
           { country:"美国", icon:"fas fa-flag-usa", price:"¥29/月", link:"#" },
-          { country:"日本", icon:"fas fa-flag", price:"¥35/月", link:"#" },
-          { country:"韩国", icon:"fas fa-flag", price:"¥32/月", link:"#" },
-          { country:"英国", icon:"fas fa-flag", price:"¥38/月", link:"#" },
-          { country:"德国", icon:"fas fa-flag", price:"¥30/月", link:"#" },
-          { country:"法国", icon:"fas fa-flag", price:"¥31/月", link:"#" },
-          { country:"加拿大", icon:"fas fa-flag", price:"¥28/月", link:"#" }
+          { country:"日本", icon:"fas fa-flag", price:"¥35/月", link:"#" }
         ],
         images: {}
       };
     }
 
     async function loadFromGitHub() {
-      const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/data.json`;
+      const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/data.json`;
       try {
-        const res = await fetch(url, {
-          headers: { 'Authorization': `token ${config.token}` }
-        });
+        const res = await fetch(url, { headers: { 'Authorization': `token ${token}` } });
         if (!res.ok) throw new Error('加载失败');
         const json = await res.json();
         const content = JSON.parse(atob(json.content));
@@ -401,7 +304,6 @@
         uploadedImages = content.images || {};
         return true;
       } catch(e) {
-        console.log('从GitHub加载失败，使用默认数据', e);
         const def = getDefaultData();
         freeData = def.free;
         rentalData = def.rental;
@@ -412,15 +314,13 @@
     }
 
     async function saveToGitHub() {
+      if (!token) { showToast('❌ 请先登录'); return; }
       document.getElementById('savingOverlay').style.display = 'flex';
-      const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/data.json`;
+      const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/data.json`;
       
       const content = JSON.stringify({
-        free: freeData,
-        rental: rentalData,
-        premium: premiumData,
-        images: uploadedImages,
-        updated_at: new Date().toISOString()
+        free: freeData, rental: rentalData, premium: premiumData,
+        images: uploadedImages, updated_at: new Date().toISOString()
       }, null, 2);
 
       const body = {
@@ -429,56 +329,34 @@
       };
 
       try {
-        // 先获取文件sha
         let sha = '';
         try {
-          const getRes = await fetch(url, {
-            headers: { 'Authorization': `token ${config.token}` }
-          });
-          if (getRes.ok) {
-            const getJson = await getRes.json();
-            sha = getJson.sha;
-          }
+          const getRes = await fetch(url, { headers: { 'Authorization': `token ${token}` } });
+          if (getRes.ok) sha = (await getRes.json()).sha;
         } catch(e) {}
-
         if (sha) body.sha = sha;
 
         const res = await fetch(url, {
           method: 'PUT',
-          headers: {
-            'Authorization': `token ${config.token}`,
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
         });
 
-        if (res.ok) {
-          showToast('✅ 已保存到 GitHub！等1-2分钟后前端自动更新');
-        } else {
-          const err = await res.json();
-          showToast('❌ 保存失败: ' + (err.message || '未知错误'));
-        }
+        if (res.ok) showToast('✅ 已保存到 GitHub！等1-2分钟前端更新');
+        else showToast('❌ 保存失败: ' + ((await res.json()).message || '未知错误'));
       } catch(e) {
-        showToast('❌ 网络错误，请检查 Token 是否正确');
+        showToast('❌ 网络错误: ' + e.message);
       }
       document.getElementById('savingOverlay').style.display = 'none';
     }
 
     function exportData() {
-      const data = {
-        free: freeData,
-        rental: rentalData,
-        premium: premiumData,
-        images: uploadedImages,
-        exported_at: new Date().toISOString()
-      };
+      const data = { free: freeData, rental: rentalData, premium: premiumData, images: uploadedImages };
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url;
+      a.href = URL.createObjectURL(blob);
       a.download = 'backup_' + new Date().toISOString().slice(0,10) + '.json';
       a.click();
-      URL.revokeObjectURL(url);
       showToast('✅ 备份文件已下载');
     }
 
@@ -494,10 +372,8 @@
           if (data.premium) premiumData = data.premium;
           if (data.images) uploadedImages = data.images;
           renderAll();
-          showToast('✅ 数据已导入，请点击"保存到 GitHub"');
-        } catch(err) {
-          showToast('❌ 文件格式错误');
-        }
+          showToast('✅ 已导入，请点"保存到 GitHub"');
+        } catch(err) { showToast('❌ 文件格式错误'); }
       };
       reader.readAsText(file);
       event.target.value = '';
@@ -507,10 +383,7 @@
     function handleImageUpload(event, table, index) {
       const file = event.target.files[0];
       if (!file) return;
-      if (file.size > 2 * 1024 * 1024) {
-        showToast('图片不能超过2MB，建议压缩后再上传');
-        return;
-      }
+      if (file.size > 500 * 1024) { showToast('图片不能超过500KB'); return; }
       const reader = new FileReader();
       reader.onload = function(e) {
         const key = `${table}-${index}`;
@@ -524,12 +397,11 @@
     }
 
     function clearUploadedImage(table, index) {
-      const key = `${table}-${index}`;
-      delete uploadedImages[key];
-      const defaultIcon = table === 'rental' ? 'fas fa-gamepad' : 'fas fa-flag';
-      if (table === 'free') freeData[index].icon = defaultIcon;
-      else if (table === 'rental') rentalData[index].icon = defaultIcon;
-      else if (table === 'premium') premiumData[index].icon = defaultIcon;
+      delete uploadedImages[`${table}-${index}`];
+      const di = table === 'rental' ? 'fas fa-gamepad' : 'fas fa-flag';
+      if (table === 'free') freeData[index].icon = di;
+      else if (table === 'rental') rentalData[index].icon = di;
+      else if (table === 'premium') premiumData[index].icon = di;
       updateIconPreview(table, index);
     }
 
@@ -550,7 +422,6 @@
       if (table === 'free') icon = freeData[index]?.icon;
       else if (table === 'rental') icon = rentalData[index]?.icon;
       else if (table === 'premium') icon = premiumData[index]?.icon;
-      
       if (uploadedImg || (icon && (icon.startsWith('data:image') || icon.startsWith('http')))) {
         preview.innerHTML = `<img src="${uploadedImg || icon}" alt="图标">`;
       } else if (icon && icon.startsWith('fa')) {
@@ -560,19 +431,15 @@
       }
     }
 
-    // ========== 表格渲染 ==========
+    // ========== 表格 ==========
     function bindInputs(table) {
       document.querySelectorAll(`input[data-table="${table}"]`).forEach(input => {
         input.removeEventListener('input', inputHandler);
         input.addEventListener('input', inputHandler);
       });
     }
-
     function inputHandler(e) {
-      const field = e.target.dataset.field;
-      const idx = parseInt(e.target.dataset.idx);
-      const table = e.target.dataset.table;
-      const value = e.target.value;
+      const field = e.target.dataset.field, idx = parseInt(e.target.dataset.idx), table = e.target.dataset.table, value = e.target.value;
       if (table === 'free') freeData[idx][field] = value;
       else if (table === 'rental') rentalData[idx][field] = value;
       else if (table === 'premium') premiumData[idx][field] = value;
@@ -580,107 +447,87 @@
 
     function deleteRow(table, index) {
       if (!confirm('确定删除吗？')) return;
-      const key = `${table}-${index}`;
-      delete uploadedImages[key];
+      delete uploadedImages[`${table}-${index}`];
       const newImages = {};
       if (table === 'free') freeData.splice(index, 1);
       else if (table === 'rental') rentalData.splice(index, 1);
       else if (table === 'premium') premiumData.splice(index, 1);
       Object.keys(uploadedImages).forEach(k => {
         if (k.startsWith(table + '-')) {
-          const oldIdx = parseInt(k.split('-')[1]);
-          if (oldIdx < index) newImages[k] = uploadedImages[k];
-          else if (oldIdx > index) newImages[`${table}-${oldIdx-1}`] = uploadedImages[k];
+          const oi = parseInt(k.split('-')[1]);
+          if (oi < index) newImages[k] = uploadedImages[k];
+          else if (oi > index) newImages[`${table}-${oi-1}`] = uploadedImages[k];
         }
       });
       uploadedImages = newImages;
       renderAll();
-      showToast('已删除（记得保存到GitHub）');
+      showToast('已删除（记得保存）');
     }
 
-    function addFreeRow() {
-      freeData.push({ country:'新国家', icon:'fas fa-flag', id:'new@mail.com', password:'password', extra:'备注' });
-      renderAll();
-    }
-    function addRentalRow() {
-      rentalData.push({ game:'新游戏', icon:'fas fa-gamepad', price:'¥0/天', desc:'描述', link:'#' });
-      renderAll();
-    }
-    function addPremiumRow() {
-      premiumData.push({ country:'新国家', icon:'fas fa-flag', price:'¥0/月', link:'#' });
-      renderAll();
+    function addFreeRow() { freeData.push({ country:'新国家', icon:'fas fa-flag', id:'new@mail.com', password:'password', extra:'备注' }); renderAll(); }
+    function addRentalRow() { rentalData.push({ game:'新游戏', icon:'fas fa-gamepad', price:'¥0/天', desc:'描述', link:'#' }); renderAll(); }
+    function addPremiumRow() { premiumData.push({ country:'新国家', icon:'fas fa-flag', price:'¥0/月', link:'#' }); renderAll(); }
+
+    function makeRow(table, idx) {
+      const k = `${table}-${idx}`;
+      return `<div class="icon-upload-cell">
+        <div class="icon-preview-img" id="icon-preview-${k}"></div>
+        <div class="upload-btn-wrapper">
+          <label class="upload-btn"><i class="fas fa-upload"></i> 上传<input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(event,'${table}',${idx})"></label>
+          <input type="text" class="icon-url-input" value="" placeholder="图标类名/URL" oninput="handleIconUrlChange(event,'${table}',${idx})" id="icon-input-${k}">
+          <button class="clear-icon-btn" onclick="clearUploadedImage('${table}',${idx})"><i class="fas fa-times"></i> 清除</button>
+        </div>
+      </div>`;
     }
 
     function renderAll() {
-      // 免费表格
-      document.getElementById('freeTableBody').innerHTML = freeData.map((item, idx) => `
-        <tr>
+      document.getElementById('freeTableBody').innerHTML = freeData.map((item, idx) => {
+        const k = `free-${idx}`;
+        return `<tr>
           <td><input type="text" value="${item.country||''}" data-field="country" data-idx="${idx}" data-table="free"></td>
-          <td><div class="icon-upload-cell">
-            <div class="icon-preview-img" id="icon-preview-free-${idx}"></div>
-            <div class="upload-btn-wrapper">
-              <label class="upload-btn"><i class="fas fa-upload"></i> 上传<input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(event,'free',${idx})"></label>
-              <input type="text" class="icon-url-input" value="${item.icon||''}" placeholder="图标类名/URL" oninput="handleIconUrlChange(event,'free',${idx})">
-              <button class="clear-icon-btn" onclick="clearUploadedImage('free',${idx})"><i class="fas fa-times"></i> 清除</button>
-            </div>
-          </div></td>
+          <td>${makeRow('free', idx)}</td>
           <td><input type="text" value="${item.id||''}" data-field="id" data-idx="${idx}" data-table="free"></td>
           <td><input type="text" value="${item.password||''}" data-field="password" data-idx="${idx}" data-table="free"></td>
           <td><input type="text" value="${item.extra||''}" data-field="extra" data-idx="${idx}" data-table="free"></td>
           <td><button class="icon-btn delete-btn" onclick="deleteRow('free',${idx})"><i class="fas fa-trash"></i></button></td>
-        </tr>
-      `).join('');
-      freeData.forEach((_, i) => updateIconPreview('free', i));
+        </tr>`;
+      }).join('');
+      freeData.forEach((_, i) => { updateIconPreview('free', i); document.getElementById(`icon-input-free-${i}`).value = freeData[i].icon || ''; });
 
-      // 租用表格
-      document.getElementById('rentalTableBody').innerHTML = rentalData.map((item, idx) => `
-        <tr>
+      document.getElementById('rentalTableBody').innerHTML = rentalData.map((item, idx) => {
+        const k = `rental-${idx}`;
+        return `<tr>
           <td><input type="text" value="${item.game||''}" data-field="game" data-idx="${idx}" data-table="rental"></td>
-          <td><div class="icon-upload-cell">
-            <div class="icon-preview-img" id="icon-preview-rental-${idx}"></div>
-            <div class="upload-btn-wrapper">
-              <label class="upload-btn"><i class="fas fa-upload"></i> 上传<input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(event,'rental',${idx})"></label>
-              <input type="text" class="icon-url-input" value="${item.icon||''}" placeholder="图标类名/URL" oninput="handleIconUrlChange(event,'rental',${idx})">
-              <button class="clear-icon-btn" onclick="clearUploadedImage('rental',${idx})"><i class="fas fa-times"></i> 清除</button>
-            </div>
-          </div></td>
+          <td>${makeRow('rental', idx)}</td>
           <td><input type="text" value="${item.price||''}" data-field="price" data-idx="${idx}" data-table="rental"></td>
           <td><input type="text" value="${item.desc||''}" data-field="desc" data-idx="${idx}" data-table="rental"></td>
           <td><input type="text" value="${item.link||''}" data-field="link" data-idx="${idx}" data-table="rental"></td>
           <td><button class="icon-btn delete-btn" onclick="deleteRow('rental',${idx})"><i class="fas fa-trash"></i></button></td>
-        </tr>
-      `).join('');
-      rentalData.forEach((_, i) => updateIconPreview('rental', i));
+        </tr>`;
+      }).join('');
+      rentalData.forEach((_, i) => { updateIconPreview('rental', i); document.getElementById(`icon-input-rental-${i}`).value = rentalData[i].icon || ''; });
 
-      // 独享表格
-      document.getElementById('premiumTableBody').innerHTML = premiumData.map((item, idx) => `
-        <tr>
+      document.getElementById('premiumTableBody').innerHTML = premiumData.map((item, idx) => {
+        const k = `premium-${idx}`;
+        return `<tr>
           <td><input type="text" value="${item.country||''}" data-field="country" data-idx="${idx}" data-table="premium"></td>
-          <td><div class="icon-upload-cell">
-            <div class="icon-preview-img" id="icon-preview-premium-${idx}"></div>
-            <div class="upload-btn-wrapper">
-              <label class="upload-btn"><i class="fas fa-upload"></i> 上传<input type="file" accept="image/*" style="display:none" onchange="handleImageUpload(event,'premium',${idx})"></label>
-              <input type="text" class="icon-url-input" value="${item.icon||''}" placeholder="图标类名/URL" oninput="handleIconUrlChange(event,'premium',${idx})">
-              <button class="clear-icon-btn" onclick="clearUploadedImage('premium',${idx})"><i class="fas fa-times"></i> 清除</button>
-            </div>
-          </div></td>
+          <td>${makeRow('premium', idx)}</td>
           <td><input type="text" value="${item.price||''}" data-field="price" data-idx="${idx}" data-table="premium"></td>
           <td><input type="text" value="${item.link||''}" data-field="link" data-idx="${idx}" data-table="premium"></td>
           <td><button class="icon-btn delete-btn" onclick="deleteRow('premium',${idx})"><i class="fas fa-trash"></i></button></td>
-        </tr>
-      `).join('');
-      premiumData.forEach((_, i) => updateIconPreview('premium', i));
+        </tr>`;
+      }).join('');
+      premiumData.forEach((_, i) => { updateIconPreview('premium', i); document.getElementById(`icon-input-premium-${i}`).value = premiumData[i].icon || ''; });
 
-      bindInputs('free');
-      bindInputs('rental');
-      bindInputs('premium');
+      bindInputs('free'); bindInputs('rental'); bindInputs('premium');
     }
 
     function switchTab(tabName) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
       document.getElementById('tab-' + tabName).classList.add('active');
-      document.querySelector(`.tab-btn:nth-child(${tabName==='free'?1:tabName==='rental'?2:3})`).classList.add('active');
+      const idx = tabName === 'free' ? 1 : tabName === 'rental' ? 2 : 3;
+      document.querySelector(`.tab-btn:nth-child(${idx})`).classList.add('active');
     }
 
     function showToast(msg) {
@@ -695,15 +542,6 @@
       renderAll();
     }
 
-    // ========== 初始化 ==========
-    if (loadConfig()) {
-      document.getElementById('setupOverlay').style.display = 'none';
-      document.getElementById('loginOverlay').style.display = 'flex';
-    }
-
-    // 暴露全局函数
-    window.saveConfig = saveConfig;
-    window.resetConfig = resetConfig;
     window.login = login;
     window.logout = logout;
     window.switchTab = switchTab;
